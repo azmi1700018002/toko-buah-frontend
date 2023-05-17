@@ -38,21 +38,15 @@ if ($user === null) {
                 <div class="card-body">
                     <div class="input-group mb-3">
                         <span class="input-group-text" id="basic-addon1">Username</span>
-                        <input type="text" class="form-control" name="Username" value="' .
-        $user["Username"] .
-        '" aria-label="Username" aria-describedby="basic-addon1" required />
+                        <input type="text" class="form-control" name="Username" placeholder="Masukkan username baru" aria-label="Username" aria-describedby="basic-addon1" required />
                     </div>
                     <div class="input-group mb-3">
                         <span class="input-group-text" id="basic-addon1">Email</span>
-                        <input type="email" class="form-control" name="Email" value="' .
-        $user["Email"] .
-        '" aria-label="Email" aria-describedby="basic-addon1" required />
+                        <input type="email" class="form-control" name="Email" placeholder="Masukkan email baru" aria-label="Email" aria-describedby="basic-addon1" required />
                     </div>
                     <div class="input-group mb-3">
                         <span class="input-group-text" id="basic-addon1">Password</span>
-                        <input type="password" class="form-control" name="Password" value="' .
-        $user["Password"] .
-        '" aria-label="Password" aria-describedby="basic-addon1" required />
+                        <input type="password" class="form-control" name="Password" placeholder="Masukkan password baru" aria-label="Password" aria-describedby="basic-addon1" required />
                     </div>
                     <input type="hidden" name="UserID" value="' .
         $user["UserID"] .

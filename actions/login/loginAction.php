@@ -42,6 +42,7 @@ if (isset($_POST["submit"])) {
             $_SESSION["login_error"] = $response["error"];
         } else {
             $_SESSION["token"] = $response["token"];
+            $_SESSION["expired"] = $response["expired"];
             $_SESSION["UserID"] = $response["UserID"];
             $_SESSION["ProfilePicture"] = $response["ProfilePicture"];
             $_SESSION["Username"] = $response["Username"];

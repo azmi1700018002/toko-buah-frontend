@@ -12,21 +12,21 @@ $token = "Bearer " . $_SESSION["token"];
 
 $headers = ["Authorization: " . $token, "Content-Type: multipart/form-data"];
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $buah_id = $_POST["BuahID"];
+    $new_arrival_id_id = $_POST["NewArrivalID"];
     $Nama = $_POST["Nama"];
     $Deskripsi = $_POST["Deskripsi"];
-    $Harga = $_POST["Harga"];
-    $Stok = $_POST["Stok"];
+    $HargaAwal = $_POST["HargaAwal"];
+    $HargaPromo = $_POST["HargaPromo"];
 
     $post_data = [
-        "UserID" => $buah_id,
+        "NewArrivalID" => $new_arrival_id_id,
         "Nama" => $Nama,
         "Deskripsi" => $Deskripsi,
-        "Harga" => $Harga,
-        "Stok" => $Stok,
+        "HargaAwal" => $HargaAwal,
+        "HargaPromo" => $HargaPromo,
     ];
 
-    $ch = curl_init("http://localhost:3000/auth/buah/" . $buah_id);
+    $ch = curl_init("http://localhost:3000/auth/newarrival/" . $new_arrival_id_id);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PUT");
     curl_setopt($ch, CURLOPT_POSTFIELDS, $post_data);
@@ -36,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     curl_close($ch);
 
-    header("Location: ../../pages/product.php");
+    header("Location: ../../pages/new-arrival.php");
     exit();
 }
 
