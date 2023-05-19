@@ -1,4 +1,4 @@
-<?php include('../actions/login/loginAction.php'); ?>
+<?php include "../actions/login/loginAction.php"; ?>
 
 <!DOCTYPE html>
 <html>
@@ -19,16 +19,25 @@
     <link rel="stylesheet" href="../assets/css/mdb.min.css" />
     <!-- Style -->
     <link rel="stylesheet" href="../assets/style/login-form.css" />
+    <!-- SweetAlert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
 </head>
 
 <body>
+
     <?php if (isset($_SESSION["login_error"])) { ?>
-    <div>
-        <?php echo $_SESSION["login_error"]; ?>
-    </div>
+    <script>
+    Swal.fire({
+        icon: 'error',
+        title: '<?php echo $_SESSION["login_error"]; ?>',
+        showConfirmButton: false,
+        timer: 8000
+    });
+    </script>
     <?php unset($_SESSION["login_error"]); ?>
     <?php } ?>
+
     <section class="vh-100">
         <div class="container-fluid h-custom">
             <div class="row d-flex justify-content-center align-items-center h-100">
@@ -75,15 +84,13 @@
                 </div>
             </div>
         </div>
+
         <div
             class="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-primary">
-            <!-- Copyright -->
             <div class="text-white mb-3 mb-md-0">
                 Copyright © 2023. All rights reserved.
             </div>
-            <!-- Copyright -->
 
-            <!-- Right -->
             <div>
                 <a href="#!" class="text-white me-4">
                     <i class="fab fa-facebook-f"></i>
@@ -95,16 +102,12 @@
                     <i class="fab fa-google"></i>
                 </a>
             </div>
-            <!-- Right -->
         </div>
     </section>
 
-    <!-- End your project here-->
-
-    <!-- MDB -->
     <script type="text/javascript" src="../assets/js/mdb.min.js"></script>
-    <!-- Custom scripts -->
     <script type="text/javascript"></script>
+
 </body>
 
 </html>

@@ -46,6 +46,7 @@ if (isset($_POST["submit"])) {
             $_SESSION["UserID"] = $response["UserID"];
             $_SESSION["ProfilePicture"] = $response["ProfilePicture"];
             $_SESSION["Username"] = $response["Username"];
+            $_SESSION["login_success"] = "Berhasil login";
             header("Location: dashboard.php");
         }
     }

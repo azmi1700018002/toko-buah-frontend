@@ -61,16 +61,15 @@ if (isset($data["data"])) {
                                 </div>
                             </div>
                             <div class="mb-3">
-                                <label class="form-label" for="Deskripsi">Deskripsi : </label>
-                                <div class="form-outline">
-                                    <textarea id="Deskripsi" name="Deskripsi" class="form-control"
-                                        onkeyup="countChars(this)" maxlength="50"
-                                >' .
-            $newarrival["Deskripsi"] .
-            '</textarea>
-                                </div>
-                                <div id="charNum">0 dari 50 karakter</div>
+                            <label class="form-label" for="Deskripsi">Deskripsi : </label>
+                            <div class="form-outline">
+                                <textarea id="Deskripsi" name="Deskripsi" class="form-control editDeskripsi" onkeyup="charLimit(this, 50)" maxlength="50"
+                            >' .
+        $newarrival["Deskripsi"] .
+        '</textarea>
                             </div>
+                            <div class="charNum">' . strlen($newarrival["Deskripsi"]) . ' dari 50 karakter </div>
+                        </div>
                             <div class="mb-3">
                                 <label class="form-label" for="HargaAwal">Harga Awal: </label>
                                 <div class="input-group">
@@ -95,7 +94,7 @@ if (isset($data["data"])) {
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-mdb-dismiss="modal">Batal</button>
-                        <button type="submit" class="btn btn-success" onclick="showSuccess()">Edit</button>
+                        <button type="submit" class="btn btn-success" onclick="editSuccess()">Edit</button>
                     </div>
                     </form>
                 </div>
@@ -137,23 +136,3 @@ if (isset($data["data"])) {
     echo '<div class="alert alert-warning" role="alert">Tidak ada data newarrival</div>';
 }
 ?>
-<!-- Add SweetAlert script -->
-<script>
-function showSuccess() {
-    Swal.fire({
-        icon: 'success',
-        title: 'New Arrival Berhasil Diedit',
-        showConfirmButton: false,
-        timer: 8000
-    });
-}
-
-function deleteSuccess() {
-    Swal.fire({
-        icon: 'success',
-        title: 'New Arrival Berhasil Dihapus',
-        showConfirmButton: false,
-        timer: 8000
-    });
-}
-</script>

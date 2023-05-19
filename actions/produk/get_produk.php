@@ -63,13 +63,14 @@ if (isset($data["data"])) {
                             <div class="mb-3">
                                 <label class="form-label" for="Deskripsi">Deskripsi : </label>
                                 <div class="form-outline">
-                                    <textarea id="Deskripsi" name="Deskripsi" class="form-control"
-                                        onkeyup="countChars(this)" maxlength="50"
+                                    <textarea id="Deskripsi" name="Deskripsi" class="form-control editDeskripsi" onkeyup="charLimit(this, 50)" maxlength="50"
                                 >' .
             $produk["Deskripsi"] .
             '</textarea>
                                 </div>
-                                <div id="charNum">0 dari 50 karakter</div>
+                                <div class="charNum">' .
+            strlen($produk["Deskripsi"]) .
+            ' dari 50 karakter </div>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label" for="Harga">Harga : </label>
@@ -94,7 +95,7 @@ if (isset($data["data"])) {
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-mdb-dismiss="modal">Batal</button>
-                        <button type="submit" class="btn btn-success" onclick="showSuccess()">Edit</button>
+                        <button type="submit" class="btn btn-success" onclick="editSuccess()">Edit</button>
                     </div>
                     </form>
                 </div>
@@ -136,24 +137,3 @@ if (isset($data["data"])) {
     echo '<div class="alert alert-warning" role="alert">Tidak ada data produk</div>';
 }
 ?>
-
-<!-- Add SweetAlert script -->
-<script>
-function showSuccess() {
-    Swal.fire({
-        icon: 'success',
-        title: 'Produk Berhasil Diedit',
-        showConfirmButton: false,
-        timer: 8000
-    });
-}
-
-function deleteSuccess() {
-    Swal.fire({
-        icon: 'success',
-        title: 'Produk Berhasil Dihapus',
-        showConfirmButton: false,
-        timer: 8000
-    });
-}
-</script>

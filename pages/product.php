@@ -1,5 +1,5 @@
-<?php include('../helpers/token_session.php'); ?>
-<?php include('../includes/header.php'); ?>
+<?php include "../helpers/token_session.php"; ?>
+<?php include "../includes/header.php"; ?>
 
 <main style="margin-top: 58px">
     <div class="container pt-4">
@@ -51,10 +51,10 @@
                         <div class="mb-3">
                             <label class="form-label" for="Deskripsi">Deskripsi : </label>
                             <div class="form-outline">
-                                <textarea id="Deskripsi" name="Deskripsi" class="form-control"
-                                    onkeyup="countChars(this)" maxlength="50" required></textarea>
+                                <textarea id="limittambahDeskripsi" name="Deskripsi" class="form-control"
+                                    required></textarea>
                             </div>
-                            <div id="charNum">0 dari 50 karakter</div>
+                            <div id="textCounterTambah">50 Karakter Tersisa</div>
                         </div>
 
                         <div class="mb-3">
@@ -89,6 +89,15 @@
 <script type="text/javascript" src="../assets/js/mdb.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+
+<!-- data table  -->
+<script>
+$(document).ready(function() {
+    $("#myTable").DataTable();
+});
+</script>
+
+
 <!-- Add SweetAlert script -->
 <script>
 function addSuccess() {
@@ -101,12 +110,71 @@ function addSuccess() {
 }
 </script>
 
+<!-- Edit SweetAlert script -->
+<script>
+function editSuccess() {
+    Swal.fire({
+        icon: 'success',
+        title: 'Produk Berhasil Diedit',
+        showConfirmButton: false,
+        timer: 8000
+    });
+}
 
+function deleteSuccess() {
+    Swal.fire({
+        icon: 'success',
+        title: 'Produk Berhasil Dihapus',
+        showConfirmButton: false,
+        timer: 8000
+    });
+}
+</script>
+
+<!-- limit textarea form tambah -->
 <script>
 $(document).ready(function() {
-    $("#myTable").DataTable();
+    $('#limittambahDeskripsi').on('input propertychange', function() {
+        charLimitTambah(this, 50);
+    });
 });
+
+function charLimitTambah(input, maxChar) {
+    var len = $(input).val().length;
+    $('#textCounterTambah').text(len + ' dari ' + maxChar + ' karakter');
+
+    if (len > maxChar) {
+        $(input).val($(input).val().substring(0, maxChar));
+        $('#textCounterTambah').text('0 karakter tersisa');
+    } else {
+        $('#textCounterTambah').text(maxChar - len + ' karakter tersisa');
+    }
+}
 </script>
+
+<!-- limit textarea form edit -->
+<script>
+$(document).ready(function() {
+    $('.editDeskripsi').on('input propertychange', function() {
+        charLimit(this, 50);
+    });
+});
+
+function charLimit(input, maxChar) {
+    var len = $(input).val().length;
+    var counter = $(input).closest('.modal-body').find('.charNum');
+    counter.text(len + ' dari ' + maxChar + ' karakter');
+
+    if (len > maxChar) {
+        $(input).val($(input).val().substring(0, maxChar));
+        counter.text('0 karakter tersisa');
+    } else {
+        counter.text(maxChar - len + ' karakter tersisa');
+    }
+}
+</script>
+
+
 </body>
 
 </html>

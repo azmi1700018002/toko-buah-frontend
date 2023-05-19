@@ -13,7 +13,6 @@
                 alt="" loading="lazy" /> Fresh Fruit 24hours Boyolali
         </a>
 
-
         <!-- Right links -->
         <ul class="navbar-nav ms-auto d-flex flex-row">
             <!-- Avatar -->

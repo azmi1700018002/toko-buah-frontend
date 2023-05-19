@@ -44,22 +44,22 @@
                         <div class="mb-3">
                             <label class="form-label" for="Nama">Nama Arrival : </label>
                             <div class="form-outline">
-                                <input type="text" id="Nama" name="Nama" class="form-control" />
+                                <input type="text" id="Nama" name="Nama" class="form-control" required />
                             </div>
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="Deskripsi">Deskripsi : </label>
                             <div class="form-outline">
-                                <textarea id="Deskripsi" name="Deskripsi" class="form-control"
-                                    onkeyup="countChars(this)" maxlength="50"></textarea>
+                                <textarea id="limittambahDeskripsi" name="Deskripsi" class="form-control"
+                                    required></textarea>
                             </div>
-                            <div id="charNum">0 dari 50 karakter</div>
+                            <div id="textCounterTambah">50 Karakter Tersisa</div>
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="HargaAwal">Harga Awal: </label>
                             <div class="input-group">
                                 <span class="input-group-text">Rp</span>
-                                <input type="number" id="HargaAwal" name="HargaAwal" class="form-control" />
+                                <input type="number" id="HargaAwal" name="HargaAwal" class="form-control" required />
                             </div>
                         </div>
 
@@ -67,13 +67,13 @@
                             <label class="form-label" for="HargaPromo">Harga Promo: </label>
                             <div class="input-group">
                                 <span class="input-group-text">Rp</span>
-                                <input type="number" id="HargaPromo" name="HargaPromo" class="form-control" />
+                                <input type="number" id="HargaPromo" name="HargaPromo" class="form-control" required />
                             </div>
                         </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-mdb-dismiss="modal">Batal</button>
-                    <button type="submit" class="btn btn-success">Tambah</button>
+                    <button type="submit" class="btn btn-success" onclick="addSuccess()">Tambah</button>
                 </div>
                 </form>
             </div>
@@ -87,12 +87,90 @@
 <script type="text/javascript" src="../assets/js/mdb.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
-<!-- Sweet Alert -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<!-- data table -->
 <script>
 $(document).ready(function() {
     $("#myTable").DataTable();
 });
+</script>
+
+<!-- Add SweetAlert script -->
+<script>
+function addSuccess() {
+    Swal.fire({
+        icon: 'success',
+        title: 'Produk Berhasil Ditambahkan',
+        showConfirmButton: false,
+        timer: 8000
+    });
+}
+</script>
+
+
+<!-- Edit SweetAlert script -->
+<script>
+function editSuccess() {
+    Swal.fire({
+        icon: 'success',
+        title: 'New Arrival Berhasil Diedit',
+        showConfirmButton: false,
+        timer: 8000
+    });
+}
+
+function deleteSuccess() {
+    Swal.fire({
+        icon: 'success',
+        title: 'New Arrival Berhasil Dihapus',
+        showConfirmButton: false,
+        timer: 8000
+    });
+}
+</script>
+
+<!-- limit textarea form tambah -->
+<script>
+$(document).ready(function() {
+    $('#limittambahDeskripsi').on('input propertychange', function() {
+        charLimitTambah(this, 50);
+    });
+});
+
+function charLimitTambah(input, maxChar) {
+    var len = $(input).val().length;
+    $('#textCounterTambah').text(len + ' dari ' + maxChar + ' karakter');
+
+    if (len > maxChar) {
+        $(input).val($(input).val().substring(0, maxChar));
+        $('#textCounterTambah').text('0 karakter tersisa');
+    } else {
+        $('#textCounterTambah').text(maxChar - len + ' karakter tersisa');
+    }
+}
+</script>
+
+<!-- limit textarea form edit -->
+<script>
+$(document).ready(function() {
+    $('.editDeskripsi').on('input propertychange', function() {
+        charLimit(this, 50);
+    });
+});
+
+function charLimit(input, maxChar) {
+    var len = $(input).val().length;
+    var counter = $(input).closest('.modal-body').find('.charNum');
+    counter.text(len + ' dari ' + maxChar + ' karakter');
+
+    if (len > maxChar) {
+        $(input).val($(input).val().substring(0, maxChar));
+        counter.text('0 karakter tersisa');
+    } else {
+        counter.text(maxChar - len + ' karakter tersisa');
+    }
+}
 </script>
 
 </body>

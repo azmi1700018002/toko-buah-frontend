@@ -1,5 +1,5 @@
-<?php include('../helpers/token_session.php'); ?>
-<?php include('../includes/header.php'); ?>
+<?php include "../helpers/token_session.php"; ?>
+<?php include "../includes/header.php"; ?>
 
 <main style="margin-top: 58px">
     <div class="container pt-4">
@@ -30,11 +30,8 @@
 </main>
 
 <script type="text/javascript">
-// Mengecek apakah sudah ada data sebelumnya
 var homeCards = document.querySelectorAll("#home-card .card");
 if (homeCards.length > 0) {
-    // Menampilkan alert jika sudah ada data
-    // Show notification
     var alertMessage = document.createElement("div");
     alertMessage.classList.add("alert", "alert-warning", "d-flex", "align-items-center");
 
@@ -51,7 +48,6 @@ if (homeCards.length > 0) {
     var container = document.querySelector(".container");
     container.insertBefore(alertMessage, container.firstChild);
 
-    // Menonaktifkan form input
     var form = document.querySelector("form");
     var inputs = form.querySelectorAll("input, textarea, button");
     inputs.forEach(function(input) {
@@ -60,7 +56,6 @@ if (homeCards.length > 0) {
 }
 </script>
 <script type="text/javascript" src="../assets/js/mdb.min.js"></script>
-<script type="text/javascript" src="../assets/js/admin.js"></script>
 </body>
 
 

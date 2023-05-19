@@ -23,39 +23,39 @@
     </div>
 </main>
 
+<script type="text/javascript" src="../assets/js/mdb.min.js"></script>
 <script type="text/javascript">
 // Mengecek apakah sudah ada data sebelumnya
-var aboutCards = document.querySelectorAll("#about-card .card");
-if (aboutCards.length > 0) {
-    // Menampilkan alert jika sudah ada data
-    // Show notification
-    var alertMessage = document.createElement("div");
-    alertMessage.classList.add("alert", "alert-warning", "d-flex", "align-items-center");
+document.addEventListener("DOMContentLoaded", function() {
+    var aboutCards = document.querySelectorAll("#about-card .card");
+    if (aboutCards.length > 0) {
+        // Menampilkan alert jika sudah ada data
+        // Show notification
+        var alertMessage = document.createElement("div");
+        alertMessage.classList.add("alert", "alert-warning", "d-flex", "align-items-center");
 
-    var icon = document.createElement("i");
-    icon.classList.add("fas", "fa-exclamation-circle", "me-2");
+        var icon = document.createElement("i");
+        icon.classList.add("fas", "fa-exclamation-circle", "me-2");
 
-    var message = document.createElement("div");
-    message.innerHTML =
-        'Form aktif jika tidak ada data about, Silahkan <a href="#" class="alert-link">Edit</a> atau <a href="#" class="alert-link">Hapus</a> jika ingin menambahkan';
+        var message = document.createElement("div");
+        message.innerHTML =
+            'Form aktif jika tidak ada data about, Silahkan <a href="#" class="alert-link">Edit</a> atau <a href="#" class="alert-link">Hapus</a> jika ingin menambahkan';
 
-    alertMessage.appendChild(icon);
-    alertMessage.appendChild(message);
+        alertMessage.appendChild(icon);
+        alertMessage.appendChild(message);
 
-    var container = document.querySelector(".container");
-    container.insertBefore(alertMessage, container.firstChild);
+        var container = document.querySelector(".container");
+        container.insertBefore(alertMessage, container.firstChild);
 
-    // Menonaktifkan form input
-    var form = document.querySelector("form");
-    var inputs = form.querySelectorAll("input, textarea, button");
-    inputs.forEach(function(input) {
-        input.disabled = true;
-    });
-}
+        // Menonaktifkan form input
+        var form = document.querySelector("form");
+        var inputs = form.querySelectorAll("input, textarea, button");
+        inputs.forEach(function(input) {
+            input.disabled = true;
+        });
+    }
+});
 </script>
-<script type="text/javascript" src="../assets/js/mdb.min.js"></script>
-<script type="text/javascript" src="../assets/js/admin.js"></script>
 </body>
-
 
 </html>
