@@ -1,6 +1,32 @@
 <?php include "../helpers/token_session.php"; ?>
 <?php include "../includes/header.php"; ?>
 
+<!-- Sweet Alert Success Produk -->
+<?php if (isset($_SESSION["message_produk_success"])) { ?>
+<script>
+Swal.fire({
+    icon: 'success',
+    title: '<?php echo $_SESSION["message_produk_success"]; ?>',
+    showConfirmButton: false,
+    timer: 8000
+});
+</script>
+<?php unset($_SESSION["message_produk_success"]); ?>
+<?php } ?>
+
+<!-- Sweet Alert Faield Produk -->
+<?php if (isset($_SESSION["message_produk_failed"])) { ?>
+<script>
+Swal.fire({
+    icon: 'error',
+    title: '<?php echo $_SESSION["message_produk_failed"]; ?>',
+    showConfirmButton: false,
+    timer: 8000
+});
+</script>
+<?php unset($_SESSION["message_produk_failed"]); ?>
+<?php } ?>
+
 <main style="margin-top: 58px">
     <div class="container pt-4">
         <h3>Product Buah</h3>
@@ -20,6 +46,7 @@
                             <th class="text-center">Deskripsi</th>
                             <th class="text-center">Harga</th>
                             <th class="text-center">Stok</th>
+                            <th class="text-center">Gambar</th>
                             <th class="text-center">Actions</th>
                         </tr>
                     </thead>
@@ -39,7 +66,7 @@
                     <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="../actions/produk/add_produk.php" method="POST">
+                    <form action="../actions/produk/add_produk.php" method="POST" enctype="multipart/form-data">
 
                         <div class="mb-3">
                             <label class="form-label" for="Nama">Nama Produk : </label>
@@ -72,10 +99,18 @@
                             </div>
                         </div>
 
+                        <div class="mb-3">
+                            <label class="form-label" for="Gambar">Upload Gambar : </label>
+                            <div class="form-outline">
+                                <input type="file" id="Gambar" name="gambar" class="form-control" required />
+                            </div>
+                        </div>
+
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-mdb-dismiss="modal">Batal</button>
-                    <button type="submit" class="btn btn-success" onclick="addSuccess()">Tambah</button>
+                    <button type="submit" class="btn btn-success">Tambah</button>
                 </div>
                 </form>
             </div>
@@ -95,40 +130,6 @@
 $(document).ready(function() {
     $("#myTable").DataTable();
 });
-</script>
-
-
-<!-- Add SweetAlert script -->
-<script>
-function addSuccess() {
-    Swal.fire({
-        icon: 'success',
-        title: 'Produk Berhasil Ditambahkan',
-        showConfirmButton: false,
-        timer: 8000
-    });
-}
-</script>
-
-<!-- Edit SweetAlert script -->
-<script>
-function editSuccess() {
-    Swal.fire({
-        icon: 'success',
-        title: 'Produk Berhasil Diedit',
-        showConfirmButton: false,
-        timer: 8000
-    });
-}
-
-function deleteSuccess() {
-    Swal.fire({
-        icon: 'success',
-        title: 'Produk Berhasil Dihapus',
-        showConfirmButton: false,
-        timer: 8000
-    });
-}
 </script>
 
 <!-- limit textarea form tambah -->

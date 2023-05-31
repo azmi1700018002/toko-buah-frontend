@@ -1,6 +1,34 @@
 <?php include('../helpers/token_session.php'); ?>
 <?php include('../includes/header.php'); ?>
 
+<!-- Sweet Alert Success about -->
+<?php if (isset($_SESSION["message_about_success"])) { ?>
+<script>
+Swal.fire({
+    icon: 'success',
+    title: '<?php echo $_SESSION["message_about_success"]; ?>',
+    showConfirmButton: false,
+    timer: 8000
+});
+</script>
+<?php unset($_SESSION["message_about_success"]); ?>
+
+<?php } ?>
+
+<!-- Sweet Alert Faield about -->
+<?php if (isset($_SESSION["message_about_failed"])) { ?>
+<script>
+Swal.fire({
+    icon: 'error',
+    title: '<?php echo $_SESSION["message_about_failed"]; ?>',
+    showConfirmButton: false,
+    timer: 8000
+});
+</script>
+<?php unset($_SESSION["message_about_failed"]); ?>
+<?php } ?>
+
+
 <main style="margin-top: 58px">
     <div class="container pt-4">
         <h3>Form Tambah About</h3>

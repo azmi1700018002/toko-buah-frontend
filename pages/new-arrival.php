@@ -1,6 +1,33 @@
 <?php include('../helpers/token_session.php'); ?>
 <?php include('../includes/header.php'); ?>
 
+<!-- Sweet Alert Success newarrival -->
+<?php if (isset($_SESSION["message_newarrival_success"])) { ?>
+<script>
+Swal.fire({
+    icon: 'success',
+    title: '<?php echo $_SESSION["message_newarrival_success"]; ?>',
+    showConfirmButton: false,
+    timer: 8000
+});
+</script>
+<?php unset($_SESSION["message_newarrival_success"]); ?>
+
+<?php } ?>
+
+<!-- Sweet Alert Faield newarrival -->
+<?php if (isset($_SESSION["message_newarrival_failed"])) { ?>
+<script>
+Swal.fire({
+    icon: 'error',
+    title: '<?php echo $_SESSION["message_newarrival_failed"]; ?>',
+    showConfirmButton: false,
+    timer: 8000
+});
+</script>
+<?php unset($_SESSION["message_newarrival_failed"]); ?>
+<?php } ?>
+
 <main style="margin-top: 58px">
     <div class="container pt-4">
         <h3>New Arrival</h3>
@@ -20,6 +47,7 @@
                             <th class="text-center">Deskripsi</th>
                             <th class="text-center">Harga Awal</th>
                             <th class="text-center">Harga Promo</th>
+                            <th class="text-center">Gambar</th>
                             <th class="text-center">Actions</th>
                         </tr>
                     </thead>
@@ -39,7 +67,8 @@
                     <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="../actions/new-arrival/add_new-arrival.php" method="POST">
+                    <form action="../actions/new-arrival/add_new-arrival.php" method="POST"
+                        enctype="multipart/form-data">
 
                         <div class="mb-3">
                             <label class="form-label" for="Nama">Nama Arrival : </label>
@@ -70,10 +99,17 @@
                                 <input type="number" id="HargaPromo" name="HargaPromo" class="form-control" required />
                             </div>
                         </div>
+
+                        <div class="mb-3">
+                            <label class="form-label" for="Gambar">Upload Gambar : </label>
+                            <div class="form-outline">
+                                <input type="file" id="Gambar" name="gambar" class="form-control" required />
+                            </div>
+                        </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-mdb-dismiss="modal">Batal</button>
-                    <button type="submit" class="btn btn-success" onclick="addSuccess()">Tambah</button>
+                    <button type="submit" class="btn btn-success">Tambah</button>
                 </div>
                 </form>
             </div>
@@ -94,40 +130,6 @@
 $(document).ready(function() {
     $("#myTable").DataTable();
 });
-</script>
-
-<!-- Add SweetAlert script -->
-<script>
-function addSuccess() {
-    Swal.fire({
-        icon: 'success',
-        title: 'Produk Berhasil Ditambahkan',
-        showConfirmButton: false,
-        timer: 8000
-    });
-}
-</script>
-
-
-<!-- Edit SweetAlert script -->
-<script>
-function editSuccess() {
-    Swal.fire({
-        icon: 'success',
-        title: 'New Arrival Berhasil Diedit',
-        showConfirmButton: false,
-        timer: 8000
-    });
-}
-
-function deleteSuccess() {
-    Swal.fire({
-        icon: 'success',
-        title: 'New Arrival Berhasil Dihapus',
-        showConfirmButton: false,
-        timer: 8000
-    });
-}
 </script>
 
 <!-- limit textarea form tambah -->

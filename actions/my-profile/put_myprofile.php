@@ -42,7 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     } else {
         echo "Gagal memperbarui data pengguna.";
     }
-    header("Location: ../../pages/login.php");
+    header("Location: ../../index.php");
     exit();
 }
 ?>

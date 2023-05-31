@@ -20,8 +20,15 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 
     $response = curl_exec($ch);
+    $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 
     curl_close($ch);
+
+    if ($http_code === 200) {
+        $_SESSION["message_newarrival_success"] = "Newarrival berhasil dihapus";
+    } else {
+        $_SESSION["message_newarrival_failed"] = "Gagal menghapus newarrival";
+    }
 
     header("Location: ../../pages/new-arrival.php");
     exit();

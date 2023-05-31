@@ -1,4 +1,4 @@
-<?php include "../actions/login/loginAction.php"; ?>
+<?php include "actions/login/loginAction.php"; ?>
 
 <!DOCTYPE html>
 <html>
@@ -16,9 +16,9 @@
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" />
     <!-- MDB -->
-    <link rel="stylesheet" href="../assets/css/mdb.min.css" />
+    <link rel="stylesheet" href="assets/css/mdb.min.css" />
     <!-- Style -->
-    <link rel="stylesheet" href="../assets/style/login-form.css" />
+    <link rel="stylesheet" href="assets/style/login-form.css" />
     <!-- SweetAlert -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
@@ -42,7 +42,7 @@
         <div class="container-fluid h-custom">
             <div class="row d-flex justify-content-center align-items-center h-100">
                 <div class="col-md-9 col-lg-6 col-xl-5">
-                    <img src="../../assets/img/home-login.jpg" class="img-fluid" alt="Sample image">
+                    <img src="assets/img/home-login.jpg" class="img-fluid">
                 </div>
                 <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
                     <div class="">
@@ -104,7 +104,7 @@
         </div>
     </section>
 
-    <script type="text/javascript" src="../assets/js/mdb.min.js"></script>
+    <script type="text/javascript" src="assets/js/mdb.min.js"></script>
     <script type="text/javascript"></script>
 
 </body>

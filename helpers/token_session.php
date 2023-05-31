@@ -3,7 +3,7 @@ session_start();
 
 // Check if user is logged in
 if (!isset($_SESSION["token"])) {
-    header("Location: login.php");
+    header("Location: ../index.php");
     exit();
 }
 
@@ -18,7 +18,7 @@ $expired = $_SESSION["expired"];
 if (strtotime($expired) < time()) {
     // Token kadaluwarsa, hapus semua data sesi dan redirect ke halaman login
     session_destroy();
-    header("Location: login.php");
+    header("Location: ../index.php");
     exit();
 }
 ?>

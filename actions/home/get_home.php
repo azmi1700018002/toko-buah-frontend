@@ -93,7 +93,7 @@ if (isset($data["data"])) {
                                 <label class="form-label" for="Deskripsi">Deskripsi : </label>
                                 <div class="form-outline">
                                     <textarea id="Deskripsi" name="Deskripsi" class="form-control"
-                                        onkeyup="countChars(this)" maxlength="50"
+                                        onkeyup="countChars(this)" maxlength="250"
                                 >' .
             $home["Deskripsi"] .
             '</textarea>
@@ -102,7 +102,7 @@ if (isset($data["data"])) {
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-mdb-dismiss="modal">Batal</button>
-                        <button type="submit" class="btn btn-success" onclick="showSuccess()">Edit</button>
+                        <button type="submit" class="btn btn-success" >Edit</button>
                     </div>
                     </form>
                 </div>
@@ -128,7 +128,7 @@ if (isset($data["data"])) {
         <input type="hidden" name="HomeID" value="' .
             $home["HomeID"] .
             '">
-        <button type="submit" class="btn btn-danger" onclick="deleteSuccess()">Hapus</button>
+        <button type="submit" class="btn btn-danger" >Hapus</button>
             </form>
         </div>
         </div>
@@ -141,25 +141,3 @@ if (isset($data["data"])) {
     echo '<div class="alert alert-warning" role="alert">Tidak ada data home</div>';
 }
 ?>
-
-
-<!-- Add SweetAlert script -->
-<script>
-function showSuccess() {
-    Swal.fire({
-        icon: 'success',
-        title: 'Home Berhasil Diedit',
-        showConfirmButton: false,
-        timer: 8000
-    });
-}
-
-function deleteSuccess() {
-    Swal.fire({
-        icon: 'success',
-        title: 'Home Berhasil Dihapus',
-        showConfirmButton: false,
-        timer: 8000
-    });
-}
-</script>

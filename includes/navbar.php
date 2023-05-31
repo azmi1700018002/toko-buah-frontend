@@ -9,8 +9,7 @@
 
         <!-- Brand -->
         <a class="navbar-brand" href="#">
-            <img src="https://d13jio720g7qcs.cloudfront.net/images/destinations/origin/5f8ffb05bc197.jpg" height="25"
-                alt="" loading="lazy" /> Fresh Fruit 24hours Boyolali
+            <img src="../assets/img/logo.png" height="25" alt="" loading="lazy" /> PT. Queen Fruits Group
         </a>
 
         <!-- Right links -->

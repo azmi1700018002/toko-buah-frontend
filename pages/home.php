@@ -1,6 +1,32 @@
 <?php include "../helpers/token_session.php"; ?>
 <?php include "../includes/header.php"; ?>
 
+<!-- Sweet Alert Success Produk -->
+<?php if (isset($_SESSION["message_home_success"])) { ?>
+<script>
+Swal.fire({
+    icon: 'success',
+    title: '<?php echo $_SESSION["message_home_success"]; ?>',
+    showConfirmButton: false,
+    timer: 8000
+});
+</script>
+<?php unset($_SESSION["message_home_success"]); ?>
+<?php } ?>
+
+<!-- Sweet Alert Faield Produk -->
+<?php if (isset($_SESSION["message_home_failed"])) { ?>
+<script>
+Swal.fire({
+    icon: 'error',
+    title: '<?php echo $_SESSION["message_home_failed"]; ?>',
+    showConfirmButton: false,
+    timer: 8000
+});
+</script>
+<?php unset($_SESSION["message_home_failed"]); ?>
+<?php } ?>
+
 <main style="margin-top: 58px">
     <div class="container pt-4">
         <h3>Form Tambah Home</h3>

@@ -16,7 +16,7 @@ if (isset($_POST["submit"])) {
 
     if (!validateLogin($email, $password)) {
         $_SESSION["login_error"] = "Email dan password tidak boleh kosong";
-        header("Location: login.php");
+        header("Location: index.php");
         exit();
     }
 
@@ -47,7 +47,7 @@ if (isset($_POST["submit"])) {
             $_SESSION["ProfilePicture"] = $response["ProfilePicture"];
             $_SESSION["Username"] = $response["Username"];
             $_SESSION["login_success"] = "Berhasil login";
-            header("Location: dashboard.php");
+            header("Location: pages/dashboard.php");
         }
     }
 }
