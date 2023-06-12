@@ -1,4 +1,6 @@
 <?php
+require_once("../../config/server.php");
+
 session_start();
 
 // Check if user is logged in
@@ -21,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         "Deskripsi" => $Deskripsi,
     ];
 
-    $ch = curl_init("http://localhost:3000/auth/about/" . $about_id);
+    $ch = curl_init($baseUrl . "auth/about/" . $about_id);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PUT");
     curl_setopt($ch, CURLOPT_POSTFIELDS, $post_data);

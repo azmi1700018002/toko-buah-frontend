@@ -4,8 +4,11 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <!-- MDB icon -->
+    <link rel="icon" href="../assets/img/favicon-32x32.png" type="image/x-icon" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <title>PT. Queen Fruits Group</title>
+
+    <title>PT. Queen Fruits Group Admin</title>
     <!-- Menghubungkan file CSS Font Awesome versi 4.3.0 -->
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 

@@ -1,4 +1,6 @@
 <?php
+require_once("../../config/server.php");
+
 session_start();
 
 // Check if user is logged in
@@ -14,7 +16,7 @@ $headers = ["Authorization: " . $token, "Content-Type: application/json"];
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $produk_id = $_POST["ProdukID"];
 
-    $ch = curl_init("http://localhost:3000/auth/produk/" . $produk_id);
+    $ch = curl_init($baseUrl . "auth/produk/" . $produk_id);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "DELETE");
     curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);

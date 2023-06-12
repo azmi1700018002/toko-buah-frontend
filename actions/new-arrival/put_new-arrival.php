@@ -1,4 +1,6 @@
 <?php
+require_once("../../config/server.php");
+
 session_start();
 
 // Check if user is logged in
@@ -34,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $post_data["gambar"] = new CURLFile($Gambar["tmp_name"], $Gambar["type"], $Gambar["name"]);
     }
     
-    $ch = curl_init("http://localhost:3000/auth/newarrival/" . $new_arrival_id_id);
+    $ch = curl_init($baseUrl . "auth/newarrival/" . $new_arrival_id_id);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PUT");
     curl_setopt($ch, CURLOPT_POSTFIELDS, $post_data);

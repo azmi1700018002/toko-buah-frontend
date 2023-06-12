@@ -1,40 +1,40 @@
 <?php include "../helpers/token_session.php"; ?>
 <?php include "../includes/header.php"; ?>
 
-<!-- Sweet Alert Success Produk -->
-<?php if (isset($_SESSION["message_produk_success"])) { ?>
+<!-- Sweet Alert Success Bestseller -->
+<?php if (isset($_SESSION["message_bestseller_success"])) { ?>
 <script>
 Swal.fire({
     icon: 'success',
-    title: '<?php echo $_SESSION["message_produk_success"]; ?>',
+    title: '<?php echo $_SESSION["message_bestseller_success"]; ?>',
     showConfirmButton: false,
     timer: 8000
 });
 </script>
-<?php unset($_SESSION["message_produk_success"]); ?>
+<?php unset($_SESSION["message_bestseller_success"]); ?>
 <?php } ?>
 
-<!-- Sweet Alert Faield Produk -->
-<?php if (isset($_SESSION["message_produk_failed"])) { ?>
+<!-- Sweet Alert Faield Bestseller -->
+<?php if (isset($_SESSION["message_bestseller_failed"])) { ?>
 <script>
 Swal.fire({
     icon: 'error',
-    title: '<?php echo $_SESSION["message_produk_failed"]; ?>',
+    title: '<?php echo $_SESSION["message_bestseller_failed"]; ?>',
     showConfirmButton: false,
     timer: 8000
 });
 </script>
-<?php unset($_SESSION["message_produk_failed"]); ?>
+<?php unset($_SESSION["message_bestseller_failed"]); ?>
 <?php } ?>
 
 <main style="margin-top: 58px">
     <div class="container pt-4">
-        <h3>Product Buah</h3>
-        <p>data tampilan produk buah</p>
+        <h3>Best Seller</h3>
+        <p>data tampilan best seller</p>
         <button type="button" class="btn btn-outline-primary ms-auto" data-mdb-ripple-color="dark"
-            data-mdb-toggle="modal" data-mdb-target="#tambahProduk">
+            data-mdb-toggle="modal" data-mdb-target="#tambahBestseller">
             <i class="fas fa-plus me-2"></i>
-            Produk
+            Best Seller
         </button>
         <section>
             <div class="my-4 table-responsive">
@@ -42,34 +42,33 @@ Swal.fire({
                     <thead>
                         <tr>
                             <th class="text-center">No</th>
-                            <th class="text-center">Nama Produk</th>
+                            <th class="text-center">Nama Bestseller</th>
                             <th class="text-center">Deskripsi</th>
-                            <th class="text-center">Harga</th>
-                            <th class="text-center">Stok</th>
                             <th class="text-center">Gambar</th>
                             <th class="text-center">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php include "../actions/produk/get_produk.php"; ?>
+                        <?php include "../actions/best-seller/get_all_best.php"; ?>
                     </tbody>
                 </table>
             </div>
     </div>
 
     <!-- Modal Add -->
-    <div class="modal fade" id="tambahProduk" tabindex="-1" aria-labelledby="tambahProduk" aria-hidden="true">
+    <div class="modal fade" id="tambahBestseller" tabindex="-1" aria-labelledby="tambahBestseller" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Tambah Produk</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Tambah Bestseller</h5>
                     <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="../actions/produk/add_produk.php" method="POST" enctype="multipart/form-data">
+                    <form action="../actions/best-seller/add_bestseller.php" method="POST"
+                        enctype="multipart/form-data">
 
                         <div class="mb-3">
-                            <label class="form-label" for="Nama">Nama Produk : </label>
+                            <label class="form-label" for="Nama">Nama Bestseller : </label>
                             <div class="form-outline">
                                 <input type="text" id="Nama" name="Nama" class="form-control" required />
                             </div>
@@ -85,30 +84,9 @@ Swal.fire({
                         </div>
 
                         <div class="mb-3">
-                            <label class="form-label" for="Harga">Harga : </label>
-                            <div class="input-group">
-                                <span class="input-group-text">Rp</span>
-                                <input type="number" id="Harga" name="Harga" class="form-control" required
-                                    oninput="this.value = this.value.replace(/[^0-9]/g, '')" />
-
-                            </div>
-                        </div>
-
-                        <div class="mb-3">
-                            <label class="form-label" for="Stok">Stok : </label>
-                            <div class="form-outline">
-                                <input type="number" id="Stok" name="Stok" class="form-control" required
-                                    oninput="this.value = this.value.replace(/[^0-9]/g, '')" />
-                            </div>
-                        </div>
-
-                        <div class="mb-3">
                             <label class="form-label" for="Gambar">Upload Gambar : </label>
                             <div class="form-outline">
-                                <input type="hidden" name="MAX_FILE_SIZE" value="1048576" />
-                                <input type="file" id="Gambar" name="gambar" class="form-control" required
-                                    accept=".jpg, .jpeg, .png" />
-                                <p class="text-danger">*file dengan type ".jpg", ".jpeg", ".png"</p>
+                                <input type="file" id="Gambar" name="gambar" class="form-control" required />
                             </div>
                         </div>
 
@@ -180,6 +158,7 @@ function charLimit(input, maxChar) {
     }
 }
 </script>
+
 
 </body>
 

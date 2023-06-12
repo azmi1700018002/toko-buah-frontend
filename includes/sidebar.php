@@ -20,11 +20,15 @@
             </a>
             <a href="new-arrival.php"
                 class="list-group-item list-group-item-action py-2 ripple <?php if(basename($_SERVER['PHP_SELF']) == 'new-arrival.php'){ echo 'active'; } ?>">
-                <i class="fas fa-cart-plus fa-fw me-3"></i><span>New Arrival</span>
+                <i class="fa fa-cart-arrow-down fa-fw me-3"></i><span>New Arrival</span>
             </a>
-            <a href="../pages/#"
-                class="list-group-item list-group-item-action py-2 ripple <?php if(basename($_SERVER['PHP_SELF']) == 'users.php'){ echo 'active'; } ?>">
-                <i class="fas fa-users fa-fw me-3"></i><span>Users</span>
+            <a href="best-seller.php"
+                class="list-group-item list-group-item-action py-2 ripple <?php if(basename($_SERVER['PHP_SELF']) == 'best-seller.php'){ echo 'active'; } ?>">
+                <i class="fa fa-caret-square-o-up fa-fw me-3"></i><span>Best Seller</span>
+            </a>
+            <a href="testimoni.php"
+                class="list-group-item list-group-item-action py-2 ripple <?php if(basename($_SERVER['PHP_SELF']) == 'testimoni.php'){ echo 'active'; } ?>">
+                <i class="fa fa-comments fa-fw me-3"></i><span>Testimoni</span>
             </a>
         </div>
     </div>

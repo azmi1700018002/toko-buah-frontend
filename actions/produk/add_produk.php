@@ -1,4 +1,6 @@
 <?php
+require_once("../../config/server.php");
+
 session_start();
 
 // Check if user is logged in
@@ -30,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // Append file data to the post data
     $post_data["gambar"] = new CURLFile($Gambar["tmp_name"], $Gambar["type"], $Gambar["name"]);
 
-    $ch = curl_init("http://localhost:3000/auth/produk");
+    $ch = curl_init($baseUrl . "auth/produk");
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_POSTFIELDS, $post_data);
     curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);

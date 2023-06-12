@@ -1,7 +1,7 @@
 <?php
 require_once("../config/server.php");
 
-$url = $baseUrl . "auth/produk";
+$url = $baseUrl . "auth/testimoni";
 $token = $_SESSION["token"];
 $headers = ["Authorization: Bearer " . $token];
 $curl = curl_init();
@@ -21,50 +21,48 @@ curl_close($curl);
 $data = json_decode($response, true);
 if (isset($data["data"])) {
     $nomor = 1; // initialize the variable
-    foreach ($data["data"] as $produk) {
+    foreach ($data["data"] as $testimoni) {
         echo "<tr>";
         echo "<td class='text-center'>" . $nomor . "</td>"; // add the number column
-        echo "<td class='text-center'>" . $produk["Nama"] . "</td>";
-        echo "<td class='text-center'>" . $produk["Deskripsi"] . "</td>";
-        echo "<td class='text-center'>" . $produk["Harga"] . "</td>";
-        echo "<td class='text-center'>" . $produk["Stok"] . "</td>";
+        echo "<td class='text-center'>" . $testimoni["Nama"] . "</td>";
+        echo "<td class='text-center'>" . $testimoni["Deskripsi"] . "</td>";
         echo "<td style='text-align: center; vertical-align: middle;'>
         <div style='max-height: 200px; max-width:200px; overflow: hidden; display: inline-block;'>
-        <img src='uploads/" .
-            $produk["Gambar"] .
+        <img src='uploads/testimoni/" .
+            $testimoni["Gambar"] .
             "' class='img-fluid'>
     </div> </td>";
         echo '<td>
         <div class="d-flex justify-content-center">
        
-            <button type="submit" class="btn btn-link btn-rounded btn-sm fw-bold text-warning" data-mdb-ripple-color="dark" data-mdb-toggle="modal" data-mdb-target="#editProduk' .
-            $produk["ProdukID"] .
+            <button type="submit" class="btn btn-link btn-rounded btn-sm fw-bold text-warning" data-mdb-ripple-color="dark" data-mdb-toggle="modal" data-mdb-target="#editTestimoni' .
+            $testimoni["TestimoniID"] .
             '">  <i class="fas fa-edit"></i> </button>
-            <div class="modal fade" id="editProduk' .
-            $produk["ProdukID"] .
-            '" tabindex="-1" aria-labelledby="editProduk" aria-hidden="true">
+            <div class="modal fade" id="editTestimoni' .
+            $testimoni["TestimoniID"] .
+            '" tabindex="-1" aria-labelledby="editTestimoni" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="editProduk">Edit Produk</h5>
+                        <h5 class="modal-title" id="editTestimoni">Edit Testimoni</h5>
                         <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form method="POST" action="../actions/produk/put_produk.php" enctype="multipart/form-data">
+                        <form method="POST" action="../actions/testimoni/put_testimoni.php" enctype="multipart/form-data">
                         <div class="mb-3" style="display:none;">
-    <label class="form-label" for="ProdukID">ID :</label>
+    <label class="form-label" for="TestimoniID">ID :</label>
     <div class="form-outline">
-        <input type="hidden" id="ProdukID" name="ProdukID" class="form-control" value="' .
-            $produk["ProdukID"] .
+        <input type="hidden" id="TestimoniID" name="TestimoniID" class="form-control" value="' .
+            $testimoni["TestimoniID"] .
             '">
         </div>
     </div>
                                 <div class="mb-3">
-                                <label class="form-label" for="Nama">Nama Produk : </label>
+                                <label class="form-label" for="Nama">Nama Testimoni : </label>
                                 <div class="form-outline">
                                     <input type="text" id="Nama" name="Nama" class="form-control"
                                     value="' .
-            $produk["Nama"] .
+            $testimoni["Nama"] .
             '">
                                 </div>
                             </div>
@@ -73,42 +71,23 @@ if (isset($data["data"])) {
                                 <div class="form-outline">
                                     <textarea id="Deskripsi" name="Deskripsi" class="form-control editDeskripsi" onkeyup="charLimit(this, 50)" maxlength="50"
                                 >' .
-            $produk["Deskripsi"] .
+            $testimoni["Deskripsi"] .
             '</textarea>
                                 </div>
                                 <div class="charNum">' .
-            strlen($produk["Deskripsi"]) .
+            strlen($testimoni["Deskripsi"]) .
             ' dari 50 karakter </div>
                             </div>
-                            <div class="mb-3">
-                                <label class="form-label" for="Harga">Harga : </label>
-                                <div class="input-group">
-                                    <span class="input-group-text">Rp</span>
-                                    <input type="number" id="Harga" name="Harga" class="form-control"
-                                    value="' .
-            $produk["Harga"] .
-            '">
-                                </div>
-                            </div>
-
-                            <div class="mb-3">
-                                <label class="form-label" for="Stok">Stok : </label>
-                                <div class="form-outline">
-                                    <input type="number" id="Stok" name="Stok" class="form-control"
-                                    value="' .
-            $produk["Stok"] .
-            '">
-                                </div>
-                            </div>
+                    
                             <div class="mb-3">
                             <label class="form-label" for="Gambar">Upload Gambar : </label>
                             <div class="form-outline" style="text-align: center;">
                                 ';
 
-        if (!empty($produk["Gambar"])) {
+        if (!empty($testimoni["Gambar"])) {
             echo '<div style="max-height: 200px; max-width: 200px; overflow: hidden; display: inline-block;">
-                                              <img src="uploads/' .
-                $produk["Gambar"] .
+                                              <img src="uploads/testimoni/' .
+                $testimoni["Gambar"] .
                 '" class="img-fluid">
                                           </div>';
         }
@@ -127,25 +106,25 @@ if (isset($data["data"])) {
                 </div>
             </div>
         </div>
-            <button type="submit" class="btn btn-link btn-rounded btn-sm fw-bold text-danger" data-mdb-ripple-color="dark" data-mdb-toggle="modal" data-mdb-target="#deleteProduk' .
-            $produk["ProdukID"] .
+            <button type="submit" class="btn btn-link btn-rounded btn-sm fw-bold text-danger" data-mdb-ripple-color="dark" data-mdb-toggle="modal" data-mdb-target="#deleteTestimoni' .
+            $testimoni["TestimoniID"] .
             '"><i class="fas fa-trash"></i> </button>
-          <div class="modal fade" id="deleteProduk' .
-            $produk["ProdukID"] .
-            '" tabindex="-1" aria-labelledby="deleteProduk" aria-hidden="true">
+          <div class="modal fade" id="deleteTestimoni' .
+            $testimoni["TestimoniID"] .
+            '" tabindex="-1" aria-labelledby="deleteTestimoni" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="deleteProduk">Modal title</h5>
+        <h5 class="modal-title" id="deleteTestimoni">Modal title</h5>
         <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body">Apakah yakin ingin menghapus data produk ini?</div>
+      <div class="modal-body">Apakah yakin ingin menghapus data testimoni ini?</div>
      
       <div class="modal-footer">
       <button type="button" class="btn btn-warning" data-mdb-dismiss="modal">Batal</button>
-      <form method="POST" action="../actions/produk/delete_produk.php">
-      <input type="hidden" name="ProdukID" value="' .
-            $produk["ProdukID"] .
+      <form method="POST" action="../actions/testimoni/delete_testimoni.php">
+      <input type="hidden" name="TestimoniID" value="' .
+            $testimoni["TestimoniID"] .
             '">
             <button type="submit" class="btn btn-danger" >Hapus</button>
         </form>
@@ -160,6 +139,6 @@ if (isset($data["data"])) {
         $nomor++; // increment the variable
     }
 } else {
-    echo '<div class="alert alert-warning" role="alert">Tidak ada data produk</div>';
+    echo '<div class="alert alert-warning" role="alert">Tidak ada data testimoni</div>';
 }
 ?>

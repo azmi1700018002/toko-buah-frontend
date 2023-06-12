@@ -1,9 +1,11 @@
 <?php
+require_once("../config/server.php");
+
 // Mendapatkan UserID dari session (asumsikan UserID tersimpan dalam $_SESSION['UserID'])
 $id_user = $_SESSION["UserID"];
 
 // Membentuk URL API dengan UserID yang spesifik
-$url = "http://localhost:3000/auth/users/" . $id_user;
+$url = $baseUrl . "auth/users/" . $id_user;
 
 // Menggunakan cURL
 $curl = curl_init();

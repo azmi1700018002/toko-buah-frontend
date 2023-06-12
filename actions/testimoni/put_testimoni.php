@@ -16,19 +16,15 @@ $token = "Bearer " . $_SESSION["token"];
 $headers = ["Authorization: " . $token];
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $produk_id = $_POST["ProdukID"]; // IdProduk yang akan diupdate
+    $testimoni_id = $_POST["TestimoniID"]; // IdTestimoni yang akan diupdate
     $Nama = $_POST["Nama"];
     $Deskripsi = $_POST["Deskripsi"];
-    $Harga = $_POST["Harga"];
-    $Stok = $_POST["Stok"];
     $Gambar = $_FILES["gambar"];
 
     $post_data = [
-        "ProdukID" => $produk_id, // Tambahkan IdProduk ke data yang akan dikirim
+        "TestimoniID" => $testimoni_id, // Tambahkan IdTestimoni ke data yang akan dikirim
         "Nama" => $Nama,
         "Deskripsi" => $Deskripsi,
-        "Harga" => $Harga,
-        "Stok" => $Stok,
     ];
 
        // Check if a new file is uploaded
@@ -37,7 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $post_data["gambar"] = new CURLFile($Gambar["tmp_name"], $Gambar["type"], $Gambar["name"]);
     }
 
-    $ch = curl_init($baseUrl . "auth/produk/" . $produk_id); // Gunakan URL dengan IdProduk yang akan diupdate
+    $ch = curl_init($baseUrl . "auth/testimoni/" . $testimoni_id); // Gunakan URL dengan IdTestimoni yang akan diupdate
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PUT"); // Menggunakan metode PUT untuk update data
     curl_setopt($ch, CURLOPT_POSTFIELDS, $post_data);
@@ -49,13 +45,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     curl_close($ch);
 
     if ($http_code === 200) {
-        $_SESSION["message_produk_success"] = "Produk berhasil diedit";
+        $_SESSION["message_testimoni_success"] = "Testimoni berhasil diedit";
     } else {
-        $_SESSION["message_produk_failed"] = "Gagal edit produk";
+        $_SESSION["message_testimoni_failed"] = "Gagal edit testimoni";
     }
 
     // Redirect to product.php using header
-    header("Location: ../../pages/product.php");
+    header("Location: ../../pages/testimoni.php");
     exit();
 }
 ?>

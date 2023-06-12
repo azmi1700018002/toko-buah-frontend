@@ -1,4 +1,6 @@
 <?php
+require_once("../../config/server.php");
+
 session_start();
 
 if (!isset($_SESSION["UserID"])) {
@@ -7,7 +9,7 @@ if (!isset($_SESSION["UserID"])) {
 }
 
 $id_user = $_SESSION["UserID"];
-$url = "http://localhost:3000/auth/users/" . $id_user;
+$url = $baseUrl . "auth/users/" . $id_user;
 $token = "Bearer " . $_SESSION["token"];
 
 // Memeriksa apakah data pengguna dikirim melalui formulir POST

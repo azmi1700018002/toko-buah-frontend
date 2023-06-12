@@ -1,5 +1,7 @@
 <?php
-$url = "http://localhost:3000/auth/about";
+require_once("../config/server.php");
+
+$url = $baseUrl."auth/about";
 $token = $_SESSION["token"];
 $headers = ["Authorization: Bearer " . $token];
 $curl = curl_init();

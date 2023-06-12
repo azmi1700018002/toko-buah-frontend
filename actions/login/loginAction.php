@@ -1,4 +1,6 @@
 <?php
+require_once("config/server.php");
+
 function validateLogin($email, $password)
 {
     // validasi email dan password
@@ -21,7 +23,7 @@ if (isset($_POST["submit"])) {
     }
 
     // Melakukan request ke server
-    $url = "http://localhost:3000/login";
+    $url = $baseUrl . "login";
     $data = ["email" => $email, "password" => $password];
 
     $ch = curl_init();

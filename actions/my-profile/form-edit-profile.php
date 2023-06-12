@@ -1,11 +1,13 @@
 <?php
+require_once("../config/server.php");
+
 if (!isset($_SESSION["UserID"])) {
     echo "UserID tidak tersedia dalam sesi.";
     exit();
 }
 
 $id_user = $_SESSION["UserID"];
-$url = "http://localhost:3000/auth/users/" . $id_user;
+$url = $baseUrl . "auth/users/" . $id_user;
 $token = "Bearer " . $_SESSION["token"];
 
 $curl = curl_init();
